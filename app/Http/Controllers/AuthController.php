@@ -16,8 +16,11 @@ class AuthController extends Controller
             ]);
         }
 
+        $token = Auth::user()->createToken('Token para ' . Auth::user()->email);
+
         return response()->json([
             'message' => 'Se ha iniciado secion con exito',
+            'token' => $token->plainTextToken
         ]);
     }
 

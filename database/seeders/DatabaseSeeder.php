@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\CutType;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -15,11 +16,13 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
-
         User::factory()->create([
             'name' => 'frank',
             'email' => 'frank@email.com',
         ]);
+
+        User::factory(5)->create();
+
+        CutType::factory(5)->create();
     }
 }
