@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateBookingRequest extends FormRequest
+class StoreBookingRequest extends FormRequest
 {
     public function authorize(): bool
     {
@@ -14,24 +14,27 @@ class UpdateBookingRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'gender'      => ['sometimes', 'string'],
-            'description' => ['sometimes', 'string'],
-            'date'        => ['sometimes', 'date'],
-            'hour'        => ['sometimes', 'date_format:H:i'],
-            'cut_type_id' => ['sometimes', 'exists:cut_types,id'],
-            'status'      => ['sometimes', 'string', 'in:pending,ongoing,cancelled'],
+            'gender'      => ['required', 'string'],
+            'description' => ['required', 'string'],
+            'date'        => ['required', 'date'],
+            'hour'        => ['required', 'date_format:H:i'],
+            'cut_type_id' => ['required', 'exists:cut_types,id'],
         ];
     }
 
     public function messages(): array
     {
         return [
+            'gender.required'      => 'El género es obligatorio.',
             'gender.string'        => 'El género debe ser un texto válido.',
+            'description.required' => 'La descripción es obligatoria.',
             'description.string'   => 'La descripción debe ser un texto válido.',
+            'date.required'        => 'La fecha es obligatoria.',
             'date.date'            => 'La fecha no tiene un formato válido.',
+            'hour.required'        => 'La hora es obligatoria.',
             'hour.date_format'     => 'La hora debe tener el formato HH:MM.',
+            'cut_type_id.required' => 'El tipo de corte es obligatorio.',
             'cut_type_id.exists'   => 'El tipo de corte seleccionado no existe.',
-            'status.in'            => 'El estado debe ser: pending, ongoing o cancelled.',
         ];
     }
 }
