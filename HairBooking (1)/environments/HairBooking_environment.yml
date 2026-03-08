@@ -1,6 +1,0 @@
-name: HairBooking_environment
-variables:
-  - secret: true
-    name: TOKEN
-  - name: BASE_URL
-    value: http://localhost:8000/api
