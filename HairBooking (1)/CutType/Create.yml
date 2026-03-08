@@ -1,0 +1,21 @@
+info:
+  name: Create
+  type: http
+  seq: 2
+
+http:
+  method: POST
+  url: "{{BASE_URL}}/cut_types"
+  body:
+    type: json
+    data: |-
+      {
+        "name" : "El del Cristiano ronaldo"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
