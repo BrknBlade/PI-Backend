@@ -1,0 +1,26 @@
+info:
+  name: Update
+  type: http
+  seq: 5
+
+http:
+  method: PATCH
+  url: "{{BASE_URL}}/cut_types/{{id}}"
+  body:
+    type: json
+    data: |-
+      {
+        "name" : "El anticorte del Messie"
+      }
+  auth: inherit
+
+runtime:
+  variables:
+    - name: id
+      value: "5"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

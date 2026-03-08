@@ -1,0 +1,28 @@
+info:
+  name: Update
+  type: http
+  seq: 5
+
+http:
+  method: PATCH
+  url: "{{BASE_URL}}/bookings/{{id}}"
+  body:
+    type: json
+    data: |-
+      {
+          "status": "ongoing"
+      }
+  auth:
+    type: bearer
+    token: XLUtYAnGX6SKvAGG2AGOvU8wuCOvPCRm80RjjS113dbe6bb4
+
+runtime:
+  variables:
+    - name: id
+      value: "1"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

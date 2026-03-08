@@ -1,0 +1,22 @@
+info:
+  name: Delete
+  type: http
+  seq: 4
+
+http:
+  method: DELETE
+  url: "{{BASE_URL}}/bookings/{{id}}"
+  auth:
+    type: bearer
+    token: XLUtYAnGX6SKvAGG2AGOvU8wuCOvPCRm80RjjS113dbe6bb4
+
+runtime:
+  variables:
+    - name: id
+      value: "2"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

@@ -1,0 +1,25 @@
+info:
+  name: Create
+  type: http
+  seq: 2
+
+http:
+  method: POST
+  url: "{{BASE_URL}}/bookings"
+  body:
+    type: json
+    data: |-
+      {
+          "gender": "male",
+          "description": "Me gusta el corte del Messi pero con menos degradado",
+          "date": "2026-05-03",
+          "hour": "12:30",
+          "cut_type_id": 1
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
