@@ -20,7 +20,8 @@ class AuthController extends Controller
 
         return response()->json([
             'message' => 'Se ha iniciado secion con exito',
-            'token' => $token->plainTextToken
+            'token' => $token->plainTextToken,
+            'user_id' => Auth::user()->id
         ]);
     }
 
