@@ -18,6 +18,7 @@ Route::middleware('auth:sanctum')->group(function () {
     //Users
     Route::apiResource('/users', UserController::class)->except('store');
     Route::get('/users/{user}/bookings', [UserController::class, 'bookings']);
+    Route::get('/employees', [ UserController::class, 'employees' ]);
 
     //Bookings
     Route::apiResource('/bookings', BookingController::class);
