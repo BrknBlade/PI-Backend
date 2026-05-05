@@ -8,7 +8,6 @@ use App\Http\Resources\BookingResource;
 use App\Http\Resources\UserResource;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
-use League\CommonMark\Exception\UnexpectedEncodingException;
 
 class UserController extends Controller
 {
