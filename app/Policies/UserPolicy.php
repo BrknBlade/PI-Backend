@@ -8,7 +8,8 @@ class UserPolicy
 {
     public function viewAny(User $user): bool
     {
-        return $user->role === 1; // Solo Admin
+        return $user->role === 1
+            || $user->role === 2; // Solo Admin
     }
 
     public function view(User $user, User $model): bool

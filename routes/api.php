@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BookingController;
+use App\Http\Controllers\BusinessController;
 use App\Http\Controllers\CutTypeController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -22,4 +23,8 @@ Route::middleware('auth:sanctum')->group(function () {
 
     //Bookings
     Route::apiResource('/bookings', BookingController::class);
+
+    /* --==== Hour management testing ====-- */
+    Route::get('/business/info', [ BusinessController::class, 'business_info' ]);
+    Route::get('/business/booked_hours', [ BusinessController::class, 'booked_hours' ]);
 });
