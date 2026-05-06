@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\AuthRequest;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -19,7 +18,7 @@ class AuthController extends Controller
         $token = Auth::user()->createToken('Token para ' . Auth::user()->email);
 
         return response()->json([
-            'message' => 'Se ha iniciado secion con exito',
+            'message' => 'Se ha iniciado sesion con exito',
             'token' => $token->plainTextToken,
             'user_id' => Auth::user()->id
         ]);
@@ -27,6 +26,7 @@ class AuthController extends Controller
 
     public function logout() {
         Auth::guard('web')->logout();
+        Auth::user()->tokens()->delete();
 
         return response()->json([
             'message' => 'Se ha cerrado secion correctamente'
