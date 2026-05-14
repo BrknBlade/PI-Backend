@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\Roles;
 use App\Http\Requests\UpdateUserRequest;
 use App\Http\Resources\BookingResource;
 use App\Http\Resources\UserResource;
@@ -67,5 +68,12 @@ class UserController extends Controller
     public function bookings(User $user)
     {
         return BookingResource::collection($user->bookings);
+    }
+
+    public function employees()
+    {
+        $employees = User::where('role', Roles::EMPLOYEE)->get();
+
+        return UserResource::collection($employees);
     }
 }
