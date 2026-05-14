@@ -24,14 +24,20 @@ class UpdateCutTypeRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => ['string','max:100']
+            'name' => ['string', 'max:100'],
+            'description' => ['string', 'nullable'],
+            'duration' => ['integer', 'nullable'],
+            'price' => ['numeric', 'nullable'],
         ];
     }
 
-    public function messages() {
+    public function messages()
+    {
         return [
             'name.string' => 'El nombre del corte debe de ser una cadena de texto',
-            'name.max' => 'El nombre del corte es demaciado largo'
+            'name.max' => 'El nombre del corte es demaciado largo',
+            'duration.integer' => 'La duración debe ser un número entero en minutos',
+            'price.numeric' => 'El precio debe ser un número',
         ];
     }
 }

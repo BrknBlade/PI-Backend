@@ -1,0 +1,16 @@
+services:
+  mysql:
+    image: mysql:9.6
+    container_name: MySQL
+    environment:
+      MYSQL_DATABASE: linux_disciples
+      MYSQL_ROOT_PASSWORD: Linux_Disciples_2026_Root
+      MYSQL_USER: ld
+      MYSQL_PASSWORD: linuxdisciples
+    ports:
+      - "3307:3306"
+    volumes:
+      - mysqldata:/var/lib/mysql
+
+volumes:
+  mysqldata:
