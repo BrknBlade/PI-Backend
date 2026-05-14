@@ -9,7 +9,7 @@ class CutTypePolicy
 {
     public function viewAny(User $user): bool
     {
-        return $user->role === 2; // Solo Owner
+        return true; // Solo Owner
     }
 
     public function view(User $user, CutType $cutType): bool

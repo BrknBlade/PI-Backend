@@ -9,9 +9,9 @@ class CutType extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'name'
-    ];
+protected $fillable = [
+    'name', 'description', 'duration', 'price'
+];
 
     public function bookings() {
         return $this->belongsToMany(Booking::class);
