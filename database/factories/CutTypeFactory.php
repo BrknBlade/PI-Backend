@@ -17,7 +17,10 @@ class CutTypeFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => fake()->name()
+            'name' => fake()->name(),
+            'description' => fake()->text(),
+            'duration' => fake()->numberBetween(1, 60),
+            'price' => fake()->numberBetween(1, 100)
         ];
     }
 }
