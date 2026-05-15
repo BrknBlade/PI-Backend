@@ -13,15 +13,9 @@ class CutTypeController extends Controller
 {
 
     public function index()
-    {
-        if (Auth::user()->cannot('viewAny', CutType::class)) {
-            return response()->json([
-                'message' => "You cannot perform this action"
-            ], 401);
-        }
-
-        return CutTypeResource::collection(CutType::all());
-    }
+{
+    return CutTypeResource::collection(CutType::all());
+}
 
     public function store(CreateCutTypeRequest $request)
     {
