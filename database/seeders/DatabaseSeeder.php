@@ -24,7 +24,13 @@ class DatabaseSeeder extends Seeder
         'role' => 2
     ]);
 
-    Business::factory()->create();
+        User::factory()->create([
+            'name' => 'ivan',
+            'email' => 'ivan@email.com',
+            'role' => 1
+        ]);
+
+        Business::factory()->create();
 
     User::factory(5)->create();
 
