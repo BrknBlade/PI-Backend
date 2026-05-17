@@ -18,6 +18,7 @@ class BookingResource extends JsonResource
             'user_id'     => $this->user_id,
             'cut_type_id' => $this->cut_type_id,
             'status'      => $this->status,
+            'employee_id' => $this->employee_id,
             'created_at'  => $this->created_at,
         ];
     }
