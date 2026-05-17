@@ -16,20 +16,25 @@ class DatabaseSeeder extends Seeder
     /**
      * Seed the application's database.
      */
-    public function run(): void
-    {
-        User::factory()->create([
-            'name' => 'frank',
-            'email' => 'frank@email.com',
-            'role' => 2
-        ]);
+   public function run(): void
+{
+    User::factory()->create([
+        'name' => 'frank',
+        'email' => 'frank@email.com',
+        'role' => 2
+    ]);
 
-        Business::factory()->create();
+    Business::factory()->create();
 
-        User::factory(5)->create();
+    User::factory(5)->create();
 
-        CutType::factory(5)->create();
+    CutType::factory(5)->create();
 
-        Booking::factory(20)->create();
-    }
+    Booking::factory(20)->create();
+
+    $this->call([
+        EmployeeSeeder::class,
+        CutTypeSeeder::class,
+    ]);
+}
 }

@@ -21,6 +21,7 @@ return new class extends Migration {
             $table->foreignIdFor(User::class)->constrained()->cascadeOnDelete();
             $table->foreignIdFor(CutType::class)->constrained()->cascadeOnDelete();
             $table->string('status')->default('pending');
+            $table->foreignId('employee_id')->nullable()->constrained('users')->cascadeOnDelete();
             $table->timestamps();
         });
     }
