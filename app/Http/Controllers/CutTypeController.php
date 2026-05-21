@@ -76,4 +76,11 @@ class CutTypeController extends Controller
             "message" => "Se ha eliminado el tipo de corte con exito"
         ]);
     }
+
+    public function total_services()
+    {
+        $total_services = CutType::count();
+
+        return $total_services;
+    }
 }

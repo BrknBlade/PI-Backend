@@ -16,13 +16,13 @@ class DatabaseSeeder extends Seeder
     /**
      * Seed the application's database.
      */
-   public function run(): void
-{
-    User::factory()->create([
-        'name' => 'frank',
-        'email' => 'frank@email.com',
-        'role' => 2
-    ]);
+    public function run(): void
+    {
+        User::factory()->create([
+            'name' => 'frank',
+            'email' => 'frank@email.com',
+            'role' => 2
+        ]);
 
         User::factory()->create([
             'name' => 'ivan',
@@ -36,14 +36,12 @@ class DatabaseSeeder extends Seeder
 
         Business::factory()->create();
 
-    User::factory(5)->create();
+        User::factory(5)->create();
 
-    CutType::factory(5)->create();
+        CutType::factory(5)->create();
 
-        Booking::factory(20)->create();
-
-        Booking::factory(3)->create([
-            'date' => '2026-05-' . fake()->numberBetween(18, 20)
+        Booking::factory(20)->create([
+            'date' => '2026-05-21'
         ]);
     }
 }

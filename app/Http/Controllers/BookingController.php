@@ -60,14 +60,26 @@ class BookingController extends Controller
     }
 
     public function week_bookings(Request $request) {
-        /* $boookings = Booking::where('date', '>=', $request->year . '-' . $request->month . '-' . '01') */
-        /*     ->where('date', '<=', $request->year . '-' . $request->month . '-' . $request->last_month_day) */
-        /*     ->get(); */
-
         $bookings = Booking::where('date', '>=', $request->start_date)
             ->where('date', '<=', $request->end_date)
             ->get();
 
         return BookingResource::collection($bookings);
+    }
+
+    public function cancelled_bookings()
+    {
+        $cancelled_bookings = Booking::where('status', '=', 'cancelled')
+            ->count();
+
+        return $cancelled_bookings;
+    }
+
+    public function accepted_bookings()
+    {
+        $accepted_bookings = Booking::where('status', '=', 'accepted')
+            ->count();
+
+        return $accepted_bookings;
     }
 }

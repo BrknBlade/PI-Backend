@@ -28,6 +28,11 @@ class BusinessController extends Controller
 
     public function earnings()
     {
-        return '100.45';
+        $earnings = Booking::query()
+            ->join('cut_types', 'bookings.cut_type_id', '=', 'cut_types.id')
+            ->whereIn('bookings.status', ['pending', 'accepted'])
+            ->sum('price');
+
+        return $earnings;
     }
 }
