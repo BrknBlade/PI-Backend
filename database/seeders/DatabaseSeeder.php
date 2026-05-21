@@ -30,17 +30,20 @@ class DatabaseSeeder extends Seeder
             'role' => 1
         ]);
 
+        User::factory(3)->create([
+            'role' => 3
+        ]);
+
         Business::factory()->create();
 
     User::factory(5)->create();
 
     CutType::factory(5)->create();
 
-    Booking::factory(20)->create();
+        Booking::factory(20)->create();
 
-    $this->call([
-        EmployeeSeeder::class,
-        CutTypeSeeder::class,
-    ]);
-}
+        Booking::factory(3)->create([
+            'date' => '2026-05-' . fake()->numberBetween(18, 20)
+        ]);
+    }
 }
