@@ -2,9 +2,7 @@
 
 namespace App\Http\Requests;
 
-use App\Enums\Roles;
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Support\Facades\Auth;
 
 class UpdateCutTypeRequest extends FormRequest
 {
@@ -13,7 +11,7 @@ class UpdateCutTypeRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return Auth::user()->role === Roles::EMPLOYEE;
+        return true;
     }
 
     /**
