@@ -19,6 +19,12 @@ class UserPolicy
             || $user->id === $model->id; // El propio usuario
     }
 
+    public function create(User $user)
+    {
+        return $user->role === 1
+            || $user->role === 2;
+    }
+
     public function update(User $user, User $model): bool
     {
         return $user->role === 1 // Admin

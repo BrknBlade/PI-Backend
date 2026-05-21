@@ -31,25 +31,8 @@ class DatabaseSeeder extends Seeder
             'role' => 1
         ]);
 
-        Employees::create([
-            'name'      => 'Don sexo',
-            'role'      => 'Barbero',
-            'specialty' => 'Corte clásico y afeitado',
-            'image_url' => 'Garfield.jpg',
-        ]);
-
-        Employees::create([
-            'name'      => 'Lupelto',
-            'role'      => 'Estilista',
-            'specialty' => 'Coloración y mechas',
-            'image_url' => 'donsexo.jpg',
-        ]);
-
-        Employees::create([
-            'name'      => 'Destructor de multiversos',
-            'role'      => 'Colorista',
-            'specialty' => 'Tinte y decoloración',
-            'image_url' => 'DonPaquito.webp',
+        User::factory(3)->create([
+            'role' => 3
         ]);
 
         Business::factory()->create();
@@ -59,5 +42,9 @@ class DatabaseSeeder extends Seeder
         CutType::factory(5)->create();
 
         Booking::factory(20)->create();
+
+        Booking::factory(3)->create([
+            'date' => '2026-05-' . fake()->numberBetween(18, 20)
+        ]);
     }
 }

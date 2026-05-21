@@ -36,18 +36,14 @@ class UserController extends Controller
         return new UserResource($user);
     }
 
-    public function store(StoreUserRequest $request)
+    public function store(StoreUserRequest $request, User $user)
     {
-        if(Auth::user()->cannot('create', User::class))
+        if(Auth::user()->cannot('store', $user))
         {
-            return response()->json([
-                'message' => "You cannot perform this action"
-            ], 401);
+             return response()->json([
+                 'message' => "You cannot perform this action"
+             ], 401);
         }
-
-        $user = User::create($request->validated());
-
-        return new UserResource($user);
     }
 
     public function update(UpdateUserRequest $request, User $user)

@@ -23,7 +23,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::apiResource('/cut_types', CutTypeController::class);
 
     //Users
-    Route::apiResource('/users', UserController::class)->except('store');
+    Route::apiResource('/users', UserController::class);
     Route::get('/users/{user}/bookings', [UserController::class, 'bookings']);
     // Route::get('/employees', [ UserController::class, 'employees' ]);
 
@@ -31,9 +31,11 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::apiResource('/employees', EmployeesController::class);
 
     //Bookings
+    Route::get('/bookings/week', [ BookingController::class, 'week_bookings' ]);
     Route::apiResource('/bookings', BookingController::class);
 
     /* --==== Hour management testing ====-- */
     Route::get('/business/info', [ BusinessController::class, 'business_info' ]);
+    Route::get('/business/earnings', [ BusinessController::class, 'earnings' ]);
     Route::get('/business/booked_hours', [ BusinessController::class, 'booked_hours' ]);
 });
