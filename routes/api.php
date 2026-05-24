@@ -26,7 +26,7 @@ Route::middleware('auth:sanctum')->group(function () {
 
     //Users
     Route::get('/employees/total', [ UserController::class, 'total_employees' ]);
-    Route::get('/employees', [ UserController::class, 'employees' ]);
+    Route::apiResource('/employees', EmployeesController::class);
     Route::apiResource('/users', UserController::class);
     Route::get('/users/{user}/bookings', [UserController::class, 'bookings']);
 
