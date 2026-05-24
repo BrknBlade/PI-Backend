@@ -49,6 +49,7 @@ class CutTypeController extends Controller
 
     public function update(UpdateCutTypeRequest $request, CutType $cutType)
     {
+        
         if (Auth::user()->cannot('update', $cutType)) {
             return response()->json([
                 'message' => "You cannot perform this action"

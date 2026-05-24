@@ -13,7 +13,8 @@ class UpdateCutTypeRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return Auth::user()->role === Roles::EMPLOYEE;
+        // return Auth::user()->role === Roles::EMPLOYEE;
+        return true;
     }
 
     /**

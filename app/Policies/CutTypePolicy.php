@@ -24,7 +24,7 @@ class CutTypePolicy
 
     public function update(User $user, CutType $cutType): bool
     {
-        return $user->role === 2; // Solo Owner
+        return $user->role === 2 || $user->role === 1; // Solo Owner y Admin
     }
 
     public function delete(User $user, CutType $cutType): bool
