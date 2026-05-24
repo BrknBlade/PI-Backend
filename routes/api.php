@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\BusinessController;
 use App\Http\Controllers\CutTypeController;
+use App\Http\Controllers\EmployeesController;
 use App\Http\Controllers\UserController;
 use App\Models\Booking;
 use Illuminate\Http\Request;
