@@ -20,8 +20,12 @@ class BusinessFactory extends Factory
     {
         return [
             'owner_id' => User::where('role', Roles::OWNER)->first()->id,
-            'week_open_at' => fake()->time(),
-            'week_close_at' => fake()->time(),
+            'company_name' => fake()->company(),
+            'phone_number' => fake()->phoneNumber(),
+            'email' => fake()->companyEmail(),
+            'address' => fake()->address(),
+            'week_open_at' => '08:00:00',
+            'week_close_at' => '20:00:00',
             'weekend_open_at' => fake()->time(),
             'weekend_close_at' => fake()->time(),
         ];

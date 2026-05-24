@@ -36,6 +36,8 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::apiResource('/bookings', BookingController::class);
 
     /* --==== Hour management testing ====-- */
+    Route::put('/business/info/update', [ BusinessController::class, 'update' ]);
+    Route::patch('/business/info/update', [ BusinessController::class, 'update' ]);
     Route::get('/business/info', [ BusinessController::class, 'business_info' ]);
     Route::get('/business/earnings', [ BusinessController::class, 'earnings' ]);
     Route::get('/business/booked_hours', [ BusinessController::class, 'booked_hours' ]);

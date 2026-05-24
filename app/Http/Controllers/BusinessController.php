@@ -2,12 +2,21 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UpdateBusinessInfoRequest;
 use App\Models\Booking;
 use App\Models\Business;
 use Illuminate\Http\Request;
 
 class BusinessController extends Controller
 {
+    public function update(UpdateBusinessInfoRequest $request)
+    {
+        $business = Business::find(1);
+        $business->update($request->validated());
+
+        return Business::find(1);
+    }
+
     public function business_info()
     {
         return Business::find(1);
