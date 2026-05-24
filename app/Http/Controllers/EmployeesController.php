@@ -5,11 +5,18 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreEmployeeRequest;
 use App\Http\Requests\UpdateEmployeeRequest;
 use App\Models\Employees;
+use Illuminate\Support\Facades\Auth;
 
 class EmployeesController extends Controller
 {
     public function index()
     {
+        if(Auth::user()->cannot('viewAny', Employees::class)) {
+            return response([
+                'message' => 'Bro... Who are you?'
+            ]);
+        }
+
         return response()->json(Employees::all());
     }
 

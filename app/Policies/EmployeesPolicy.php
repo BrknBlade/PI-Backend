@@ -2,6 +2,7 @@
 
 namespace App\Policies;
 
+use App\Enums\Roles;
 use App\Models\Employees;
 use App\Models\User;
 use Illuminate\Auth\Access\Response;
@@ -11,7 +12,7 @@ class EmployeesPolicy
     /**
      * Determine whether the user can view any models.
      */
-    public function viewAny(): bool
+    public function viewAny(User $user): bool
     {
         return true;
     }
