@@ -32,6 +32,27 @@ class DatabaseSeeder extends Seeder
             'role' => 2
         ]);
 
+        Employees::create([
+            'name'      => 'Don sexo',
+            'role'      => 'Barbero',
+            'specialty' => 'Corte clásico y afeitado',
+            'image_url' => 'Garfield.jpg',
+        ]);
+
+        Employees::create([
+            'name'      => 'Lupelto',
+            'role'      => 'Estilista',
+            'specialty' => 'Coloración y mechas',
+            'image_url' => 'donsexo.jpg',
+        ]);
+
+        Employees::create([
+            'name'      => 'Destructor de multiversos',
+            'role'      => 'Colorista',
+            'specialty' => 'Tinte y decoloración',
+            'image_url' => 'DonPaquito.webp',
+        ]);
+
         Business::factory()->create();
 
         User::factory(5)->create();
