@@ -20,19 +20,16 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         User::factory()->create([
-            'name' => 'frank',
-            'email' => 'frank@email.com',
-            'role' => 2
-        ]);
-
-        User::factory()->create([
-            'name' => 'ivan',
-            'email' => 'ivan@email.com',
+            'name' => 'Admin',
+            'email' => 'admin@admin.com',
+            'password' => bcrypt('admin1234'),
             'role' => 1
         ]);
 
-        User::factory(3)->create([
-            'role' => 3
+        User::factory()->create([
+            'name' => 'frank',
+            'email' => 'frank@email.com',
+            'role' => 2
         ]);
 
         Business::factory()->create();
@@ -41,8 +38,6 @@ class DatabaseSeeder extends Seeder
 
         CutType::factory(5)->create();
 
-        Booking::factory(20)->create([
-            'date' => '2026-05-21'
-        ]);
+        Booking::factory(20)->create();
     }
 }
