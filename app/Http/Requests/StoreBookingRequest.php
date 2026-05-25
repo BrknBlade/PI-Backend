@@ -19,6 +19,7 @@ class StoreBookingRequest extends FormRequest
             'date'        => ['required', 'date'],
             'hour'        => ['required', 'date_format:H:i'],
             'cut_type_id' => ['required', 'exists:cut_types,id'],
+            'employee_id' => ['nullable', 'exists:users,id'],
         ];
     }
 
@@ -35,6 +36,7 @@ class StoreBookingRequest extends FormRequest
             'hour.date_format'     => 'La hora debe tener el formato HH:MM.',
             'cut_type_id.required' => 'El tipo de corte es obligatorio.',
             'cut_type_id.exists'   => 'El tipo de corte seleccionado no existe.',
+            'employee_id.exists'   => 'El empleado seleccionado no existe.',
         ];
     }
 }

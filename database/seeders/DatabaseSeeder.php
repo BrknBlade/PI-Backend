@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\Booking;
 use App\Models\Business;
 use App\Models\CutType;
+use App\Models\Employees;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -40,10 +41,8 @@ class DatabaseSeeder extends Seeder
 
         CutType::factory(5)->create();
 
-        Booking::factory(20)->create();
-
-        Booking::factory(3)->create([
-            'date' => '2026-05-' . fake()->numberBetween(18, 20)
+        Booking::factory(20)->create([
+            'date' => '2026-05-21'
         ]);
     }
 }

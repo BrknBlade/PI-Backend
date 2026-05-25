@@ -20,6 +20,7 @@ class UpdateBookingRequest extends FormRequest
             'hour'        => ['sometimes', 'date_format:H:i'],
             'cut_type_id' => ['sometimes', 'exists:cut_types,id'],
             'status'      => ['sometimes', 'string', 'in:pending,ongoing,cancelled'],
+            'employee_id' => ['sometimes', 'exists:users,id'],
         ];
     }
 
@@ -32,6 +33,7 @@ class UpdateBookingRequest extends FormRequest
             'hour.date_format'     => 'La hora debe tener el formato HH:MM.',
             'cut_type_id.exists'   => 'El tipo de corte seleccionado no existe.',
             'status.in'            => 'El estado debe ser: pending, ongoing o cancelled.',
+            'employee_id.exists'   => 'El empleado seleccionado no existe.',
         ];
     }
 }

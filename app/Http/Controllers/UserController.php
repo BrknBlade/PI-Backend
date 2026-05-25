@@ -9,6 +9,7 @@ use App\Http\Resources\BookingResource;
 use App\Http\Resources\UserResource;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use Symfony\Component\Routing\Annotation\Route;
 
 class UserController extends Controller
 {
@@ -90,5 +91,12 @@ class UserController extends Controller
         $employees = User::where('role', Roles::EMPLOYEE)->get();
 
         return UserResource::collection($employees);
+    }
+
+    public function total_employees()
+    {
+        $total_employees = User::where('role', Roles::EMPLOYEE)->count();
+
+        return $total_employees;
     }
 }

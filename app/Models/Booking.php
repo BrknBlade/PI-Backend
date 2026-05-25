@@ -17,6 +17,7 @@ class Booking extends Model
         'user_id',
         'cut_type_id',
         'status',
+        'employee_id',
     ];
 
     public function user()

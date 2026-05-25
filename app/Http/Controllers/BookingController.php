@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\Roles;
 use App\Models\Booking;
 use App\Http\Requests\StoreBookingRequest;
 use App\Http\Requests\UpdateBookingRequest;
 use App\Http\Resources\BookingResource;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class BookingController extends Controller
 {
@@ -60,14 +62,47 @@ class BookingController extends Controller
     }
 
     public function week_bookings(Request $request) {
-        /* $boookings = Booking::where('date', '>=', $request->year . '-' . $request->month . '-' . '01') */
-        /*     ->where('date', '<=', $request->year . '-' . $request->month . '-' . $request->last_month_day) */
-        /*     ->get(); */
+        if(Auth::user()->role !== Roles::ADMIN && Auth::user()->role !== Roles::OWNER)
+        {
+            return response([
+                'message' => 'Bro... Who are you?'
+            ]);
+        }
 
         $bookings = Booking::where('date', '>=', $request->start_date)
             ->where('date', '<=', $request->end_date)
             ->get();
 
         return BookingResource::collection($bookings);
+    }
+
+    public function cancelled_bookings()
+    {
+        if(Auth::user()->role !== Roles::ADMIN && Auth::user()->role !== Roles::OWNER)
+        {
+            return response([
+                'message' => 'Bro... Who are you?'
+            ]);
+        }
+
+        $cancelled_bookings = Booking::where('status', '=', 'cancelled')
+            ->count();
+
+        return $cancelled_bookings;
+    }
+
+    public function accepted_bookings()
+    {
+        if(Auth::user()->role !== Roles::ADMIN && Auth::user()->role !== Roles::OWNER)
+        {
+            return response([
+                'message' => 'Bro... Who are you?'
+            ]);
+        }
+
+        $accepted_bookings = Booking::where('status', '=', 'accepted')
+            ->count();
+
+        return $accepted_bookings;
     }
 }
