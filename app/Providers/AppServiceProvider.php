@@ -19,6 +19,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        config(['session.secure' => true]);
+        config(['session.same_site' => 'none']);
     }
 }
