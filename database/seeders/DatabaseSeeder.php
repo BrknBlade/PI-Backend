@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\Booking;
 use App\Models\Business;
 use App\Models\CutType;
+use App\Models\Employees;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -16,25 +17,27 @@ class DatabaseSeeder extends Seeder
     /**
      * Seed the application's database.
      */
-   public function run(): void
-{
-    User::factory()->create([
-        'name' => 'frank',
-        'email' => 'frank@email.com',
-        'role' => 2
-    ]);
+    public function run(): void
+    {
+        User::factory()->create([
+            'name' => 'Admin',
+            'email' => 'admin@admin.com',
+            'password' => bcrypt('admin1234'),
+            'role' => 1
+        ]);
 
-    Business::factory()->create();
+        User::factory()->create([
+            'name' => 'frank',
+            'email' => 'frank@email.com',
+            'role' => 2
+        ]);
 
-    User::factory(5)->create();
+        Business::factory()->create();
 
-    CutType::factory(5)->create();
+        User::factory(5)->create();
 
-    Booking::factory(20)->create();
+        CutType::factory(5)->create();
 
-    $this->call([
-        EmployeeSeeder::class,
-        CutTypeSeeder::class,
-    ]);
-}
+        Booking::factory(20)->create();
+    }
 }

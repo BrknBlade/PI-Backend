@@ -5,9 +5,9 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\CutType>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Employees>
  */
-class CutTypeFactory extends Factory
+class EmployeesFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -18,9 +18,9 @@ class CutTypeFactory extends Factory
     {
         return [
             'name' => fake()->name(),
-            'description' => fake()->text(),
-            'duration' => fake()->numberBetween(1, 60),
-            'price' => fake()->numberBetween(1, 100)
+            'role' => fake()->randomElement(['estilista', 'barbero', 'colorista']),
+            'specialty' => fake()->word(),
+            'image_url' => fake()->imageUrl(),
         ];
     }
 }

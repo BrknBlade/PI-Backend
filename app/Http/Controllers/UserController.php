@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Enums\Roles;
+use App\Http\Requests\StoreUserRequest;
 use App\Http\Requests\UpdateUserRequest;
 use App\Http\Resources\BookingResource;
 use App\Http\Resources\UserResource;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use Symfony\Component\Routing\Annotation\Route;
 
 class UserController extends Controller
 {
@@ -31,6 +33,20 @@ class UserController extends Controller
                  'message' => "You cannot perform this action"
              ], 401);
          }
+
+        return new UserResource($user);
+    }
+
+    public function store(StoreUserRequest $request)
+    {
+        if(Auth::user()->cannot('create', User::class))
+        {
+            return response()->json([
+                'message' => "You cannot perform this action"
+            ], 401);
+        }
+
+        $user = User::create($request->validated());
 
         return new UserResource($user);
     }
@@ -75,5 +91,12 @@ class UserController extends Controller
         $employees = User::where('role', Roles::EMPLOYEE)->get();
 
         return UserResource::collection($employees);
+    }
+
+    public function total_employees()
+    {
+        $total_employees = User::where('role', Roles::EMPLOYEE)->count();
+
+        return $total_employees;
     }
 }
