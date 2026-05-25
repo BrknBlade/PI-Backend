@@ -20,7 +20,7 @@ return [
     'allowed_methods' => ['*'],
 
     'allowed_origins' => [
-        'https:/salon-elegancia.up.railway.app',
+        'https://salon-elegancia.up.railway.app',
         'http://localhost:4200'
     ],
 
