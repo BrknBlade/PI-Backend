@@ -25,7 +25,9 @@ return [
         'http://localhost:4200',
     ],
 
-    'allowed_origins_patterns' => [],
+    'allowed_origins_patterns' => [
+        '#^https://pi-frontend.*\.vercel\.app$#',
+    ],
 
     'allowed_headers' => ['*'],
 
