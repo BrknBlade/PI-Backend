@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\AuthRequest;
 use App\Http\Requests\RegisterRequest;
+use App\Http\Resources\UserResource;
 use App\Models\User;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -26,9 +28,11 @@ class AuthController extends Controller
         ]);
     }
 
-    public function logout() {
+    public function logout(Request $request) {
         Auth::guard('web')->logout();
         Auth::user()->tokens()->delete();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
 
         return response()->json([
             'message' => 'Se ha cerrado secion correctamente'
@@ -36,10 +40,12 @@ class AuthController extends Controller
     }
 
     public function register(RegisterRequest $request) {
-        User::create($request->validated());
+        $validated = $request->validated();
 
-        return response()->json([
-            'message' => 'Se ha registrado el usuario con exito',
-        ]);
+        $validated['role'] = 4;
+
+        $user = User::create($request->validated());
+
+        return new UserResource($user);
     }
 }
