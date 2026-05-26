@@ -36,16 +36,10 @@ class AuthController extends Controller
     }
 
     public function register(RegisterRequest $request) {
-        $user = User::create($request->validated());
-
-        Auth::login($user);
-
-        $token = Auth::user()->createToken('Token para ' . Auth::user()->email);
+        User::create($request->validated());
 
         return response()->json([
-            'message' => 'Se ha iniciado sesion con exito',
-            'token' => $token->plainTextToken,
-            'user_id' => Auth::user()->id
+            'message' => 'Se ha registrado el usuario con exito',
         ]);
     }
 }
