@@ -20,8 +20,9 @@ return [
     'allowed_methods' => ['*'],
 
     'allowed_origins' => [
-        'https://salon-elegancia.up.railway.app',
-        'http://localhost:4200'
+        'https://pi-frontend-nine.vercel.app',
+        'https://pi-backend-production-f925.up.railway.app',
+        'http://localhost:4200',
     ],
 
     'allowed_origins_patterns' => [],
