@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\AuthRequest;
+use App\Http\Requests\RegisterRequest;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -30,6 +32,20 @@ class AuthController extends Controller
 
         return response()->json([
             'message' => 'Se ha cerrado secion correctamente'
+        ]);
+    }
+
+    public function register(RegisterRequest $request) {
+        $user = User::create($request->validated());
+
+        Auth::login($user);
+
+        $token = Auth::user()->createToken('Token para ' . Auth::user()->email);
+
+        return response()->json([
+            'message' => 'Se ha iniciado sesion con exito',
+            'token' => $token->plainTextToken,
+            'user_id' => Auth::user()->id
         ]);
     }
 }
