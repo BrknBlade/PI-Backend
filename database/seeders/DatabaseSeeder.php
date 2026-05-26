@@ -27,38 +27,51 @@ class DatabaseSeeder extends Seeder
         ]);
 
         User::factory()->create([
-            'name' => 'frank',
+            'name' => 'Frank',
             'email' => 'frank@email.com',
+            'password' => bcrypt('frank1234'),
             'role' => 2
         ]);
 
+        User::factory()->create([
+            'name' => 'María García',
+            'email' => 'maria@email.com',
+            'password' => bcrypt('maria1234'),
+            'role' => 3
+        ]);
+
+        User::factory()->create([
+            'name' => 'Carlos López',
+            'email' => 'carlos@email.com',
+            'password' => bcrypt('carlos1234'),
+            'role' => 3
+        ]);
+
         Employees::create([
-            'name'      => 'Don sexo',
-            'role'      => 'Barbero',
+            'name' => 'Carlos Ruiz',
+            'role' => 'Barbero',
             'specialty' => 'Corte clásico y afeitado',
             'image_url' => 'Garfield.jpg',
         ]);
 
         Employees::create([
-            'name'      => 'Lupelto',
-            'role'      => 'Estilista',
+            'name' => 'María López',
+            'role' => 'Estilista',
             'specialty' => 'Coloración y mechas',
             'image_url' => 'donsexo.jpg',
         ]);
 
         Employees::create([
-            'name'      => 'Destructor de multiversos',
-            'role'      => 'Colorista',
+            'name' => 'Javier Martín',
+            'role' => 'Colorista',
             'specialty' => 'Tinte y decoloración',
             'image_url' => 'DonPaquito.webp',
         ]);
 
         Business::factory()->create();
 
-        User::factory(5)->create();
+        $this->call(CutTypeSeeder::class);
 
-        CutType::factory(5)->create();
-
-        Booking::factory(20)->create();
+        Booking::factory(15)->create();
     }
 }
