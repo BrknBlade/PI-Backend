@@ -18,7 +18,7 @@ class AppServiceProvider extends ServiceProvider
         config(['session.same_site' => 'none']);
 
         Gate::define('viewApiDocs', function () {
-            return app()->environment('local');
-        });
+    return app()->environment(['local', 'production']);
+});
     }
 }
