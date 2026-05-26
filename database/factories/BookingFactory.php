@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\CutType;
+use App\Models\Employees;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -25,6 +26,7 @@ class BookingFactory extends Factory
             'hour' => fake()->time('H:i'),
             'user_id' => User::inRandomOrder()->first()->id,
             'cut_type_id' => CutType::inRandomOrder()->first()->id,
+            'employee_id' => Employees::inRandomOrder()->first()->id,
             'status' => fake()->randomElement(['pending','accepted','cancelled']),
         ];
     }

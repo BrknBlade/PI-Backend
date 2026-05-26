@@ -4,7 +4,6 @@ namespace Database\Seeders;
 
 use App\Models\Booking;
 use App\Models\Business;
-use App\Models\CutType;
 use App\Models\Employees;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -29,18 +28,6 @@ class DatabaseSeeder extends Seeder
             'name' => 'Frank',
             'email' => 'frank@email.com',
             'role' => 2
-        ]);
-
-        User::factory()->create([
-            'name' => 'María García',
-            'email' => 'maria@email.com',
-            'role' => 3
-        ]);
-
-        User::factory()->create([
-            'name' => 'Carlos López',
-            'email' => 'carlos@email.com',
-            'role' => 3
         ]);
 
         Employees::create([
@@ -68,6 +55,6 @@ class DatabaseSeeder extends Seeder
 
         $this->call(CutTypeSeeder::class);
 
-        Booking::factory(15)->create();
+        // Booking::factory(15)->create();
     }
 }

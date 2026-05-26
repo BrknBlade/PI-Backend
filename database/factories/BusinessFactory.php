@@ -24,10 +24,10 @@ class BusinessFactory extends Factory
             'phone_number' => fake()->phoneNumber(),
             'email' => fake()->companyEmail(),
             'address' => fake()->address(),
-            'week_open_at' => '08:00:00',
-            'week_close_at' => '20:00:00',
-            'weekend_open_at' => fake()->time(),
-            'weekend_close_at' => fake()->time(),
+            'week_open_at' => '08:00',
+            'week_close_at' => '20:00',
+            'weekend_open_at' => '08:00',
+            'weekend_close_at' => '14:00',
         ];
     }
 }
