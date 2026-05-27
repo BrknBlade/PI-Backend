@@ -21,12 +21,13 @@ return [
 
     'allowed_origins' => [
         'https://pi-frontend-nine.vercel.app',
+        'https://salon-elegancia-pi.vercel.app',
         'https://pi-backend-production-f925.up.railway.app',
         'http://localhost:4200',
     ],
 
     'allowed_origins_patterns' => [
-        '#^https://pi-frontend.*\.vercel\.app$#',
+        '#^https://.*\.vercel\.app$#',
     ],
 
     'allowed_headers' => ['*'],
